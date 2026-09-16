@@ -3,6 +3,7 @@ import path from 'node:path';
 import { db, setSetting, getSetting, hashPassword } from './db.js';
 import { UPLOADS_DIR } from './paths.js';
 import { packArtwork } from './artwork.js';
+import { slugify } from './util.js';
 
 export const DEFAULT_SETTINGS = {
   'site.name': 'MASTENKO',
@@ -22,7 +23,7 @@ export const DEFAULT_SETTINGS = {
   'hero.subtitle': 'Працюємо лише з офіційними дистрибʼюторами: на кожну позицію є сертифікат якості та документи виробника. Замовлення збираємо й передаємо в доставку того ж дня.',
   'hero.cta': 'Перейти в каталог',
   'hero.cta_link': '/catalog',
-  'hero.image': '/uploads/hero.svg',
+  'hero.image': '/uploads/hero-mastenko.svg',
   'hero.badge': 'Сертифіковані товари',
 
   'usp.1.title': 'Тільки офіційні постачальники',
@@ -190,7 +191,13 @@ export function seed() {
       .run(process.env.ADMIN_USER || 'admin', hash, salt);
   }
 
-  writeArtwork('hero.svg', packArtwork({ title: getSetting('site.name', 'MASTENKO'), kicker: '', accent: '#1f8a70', bg: '#e4f1ec', kind: 'box' }));
+  const siteName = getSetting('site.name', 'MASTENKO');
+  const heroPath = writeArtwork(
+    `hero-${slugify(siteName, 'store')}.svg`,
+    packArtwork({ title: siteName, kicker: '', accent: '#1f8a70', bg: '#e4f1ec', kind: 'box' })
+  );
+  const currentHero = getSetting('hero.image', '');
+  if (!currentHero || /^\/uploads\/hero[-.]/.test(currentHero)) setSetting('hero.image', heroPath);
 
   if (already > 0) return;
 
