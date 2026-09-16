@@ -192,6 +192,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid rgba(31,138,112,.35);o
   .nav{display:none;order:5;width:100%;flex-direction:column;gap:4px;padding-top:10px;border-top:1px solid var(--line)}
   .nav.open{display:flex}
   .header-inner{flex-wrap:wrap}
+  .header-actions{margin-left:auto}
   .burger{display:block}
   .phone{display:none}
 }
