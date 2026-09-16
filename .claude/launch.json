@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "apteka-store",
+      "name": "mastenko-store",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["start"],
       "port": 3001

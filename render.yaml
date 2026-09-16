@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: vita-store
+    name: mastenko-store
     runtime: node
     plan: free
     buildCommand: npm install

@@ -69,7 +69,7 @@ export function homePage() {
 
 <section class="section about">
   <div class="shell about-grid">
-    <div class="about-visual"><div class="about-mark">Z</div><span>${esc(s['about.eyebrow'] || '')}</span></div>
+    <div class="about-visual"><div class="about-mark">${esc((s['site.name'] || '').trim().charAt(0).toUpperCase())}</div><span>${esc(s['about.eyebrow'] || '')}</span></div>
     <div>
       <span class="eyebrow">Про магазин</span>
       <h2>${esc(s['about.title'] || '')}</h2>
