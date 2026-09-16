@@ -1,0 +1,13 @@
+{
+  "name": "apteka-store",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Локальний інтернет-магазин аптечних товарів з адмінкою",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server.js",
+    "reset": "rm -f data/store.db && node --disable-warning=ExperimentalWarning server.js"
+  },
+  "engines": { "node": ">=22.5" }
+}
